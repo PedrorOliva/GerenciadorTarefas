@@ -32,6 +32,11 @@ public class TaskController {
     return ResponseEntity.ok(taskService.findTaskById(id));
   }
 
+  @GetMapping(path = "/searchTitle")
+  public ResponseEntity<List<TaskDTO>> findByTitle(@RequestParam String title) {
+    return ResponseEntity.ok(taskService.findTaskByTitle(title));
+  }
+
   @PutMapping(path = "/{id}")
   public ResponseEntity<?> updateTask(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
     return ResponseEntity.ok(taskService.updateTask(id, taskDTO));

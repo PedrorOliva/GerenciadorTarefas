@@ -3,6 +3,7 @@ package com.catalisa.gerenciadorDeTarefas.service;
 import com.catalisa.gerenciadorDeTarefas.dto.TaskDTO;
 import com.catalisa.gerenciadorDeTarefas.exceptions.HandleIDNotFound;
 import com.catalisa.gerenciadorDeTarefas.exceptions.HandleNoHasTasks;
+import com.catalisa.gerenciadorDeTarefas.exceptions.HandleTitleNotFound;
 import com.catalisa.gerenciadorDeTarefas.exceptions.Validation;
 import com.catalisa.gerenciadorDeTarefas.mapper.TaskMapper;
 import com.catalisa.gerenciadorDeTarefas.model.TaskModel;
@@ -28,7 +29,7 @@ public class TaskService {
 
     if (validation.isTitleValid(taskDTO.getTitle()) &&
         validation.isTittleCount(taskDTO.getTitle())) {
-      taskModel.setTitle(taskDTO.getTitle());
+      taskModel.setTitle(taskDTO.getTitle().toLowerCase());
     }
     if (validation.isDesciptionValid(taskDTO.getDescription()) &&
         validation.isDescriptionCount(taskDTO.getDescription())) {
@@ -67,6 +68,20 @@ public class TaskService {
     TaskModel task = taskRepository.findById(id).get();
     TaskDTO taskDTO = taskMapper.toTaskDTO(task);
     return Optional.of(taskDTO);
+  }
+
+  public List<TaskDTO> findTaskByTitle(String title) {
+    List<TaskModel> taskModelsOptional = taskRepository.findByTitle(title);
+
+    if(taskModelsOptional.isEmpty()) {
+      throw new HandleTitleNotFound("Título não encontrado!");
+    }
+    List<TaskDTO> task = new ArrayList<>();
+    for(TaskModel taskModel : taskModelsOptional) {
+      task.add(taskMapper.toTaskDTO(taskModel));
+    }
+
+    return task;
   }
 
   public TaskDTO updateTask(Long id, TaskDTO taskDTO) {
