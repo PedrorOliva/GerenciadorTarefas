@@ -47,7 +47,7 @@ public class Validation {
     LocalDate current = LocalDate.now();
 
     if (validity.isBefore(current)){
-      throw new HandleValidationField("A validade não pode ser inferior a data atual!");
+      throw new HandleValidationField("A validade não pode ser anterior a data atual!");
     }
     return true;
   }
