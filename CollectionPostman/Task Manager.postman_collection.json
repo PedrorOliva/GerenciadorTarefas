@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Terceira Tarefa\",\r\n    \"description\": \"Adicionando outra tarefa\",\r\n    \"validity\": \"2023-11-24\"\r\n   \r\n}",
+					"raw": "{\r\n    \"title\": \"nova tarefa\",\r\n    \"description\": \"Adicionando uma tarefa\",\r\n    \"validity\": \"2023-11-28\"\r\n   \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -61,7 +61,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/task/2",
+					"raw": "http://localhost:8080/api/task/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -70,7 +70,34 @@
 					"path": [
 						"api",
 						"task",
-						"2"
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Tasks By Title",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/task/searchTitle?title=nova tarefa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"task",
+						"searchTitle"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "nova tarefa"
+						}
 					]
 				}
 			},
@@ -112,7 +139,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/task/4",
+					"raw": "http://localhost:8080/api/task/8",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -121,7 +148,7 @@
 					"path": [
 						"api",
 						"task",
-						"4"
+						"8"
 					]
 				}
 			},
