@@ -1,6 +1,5 @@
 package com.catalisa.gerenciadorDeTarefas.repository;
 
-import com.catalisa.gerenciadorDeTarefas.dto.TaskDTO;
 import com.catalisa.gerenciadorDeTarefas.model.TaskModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

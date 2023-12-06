@@ -6,8 +6,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class GerenciadorDeTarefasApplicationTests {
 
+//	@Test
+//	void contextLoads() {
+//	}
+
 	@Test
-	void contextLoads() {
+	void main() {
+		GerenciadorDeTarefasApplication.main(new String[] {});
 	}
 
 }
